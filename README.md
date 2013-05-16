@@ -7,9 +7,13 @@ ds.php
 Setup:
 ======
 
-in .htaccess
+in .htaccess, add 
 
-Rewriterule  ^(pack/([0-9])/)(.+)\.(.+)$ /ds.php?t=$4&p=$3&o=$2  [QSA,L]
+   Rewriterule  ^(pack/([0-9])/)(.+)\.(.+)$ /ds.php?t=$4&p=$3&o=$2  [QSA,L]
+
+edit php/function.php
+
+   DEFINE (DOMAIN,"add_your_hostname_here");
 
 
 Structure
