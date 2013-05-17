@@ -1,2 +1,3 @@
-plugins/font.css
+plugins/tacoen-fix.css
+plugins/nice-lucida.css
 plugins/ds.css

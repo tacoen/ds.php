@@ -1,0 +1,8 @@
+html { overflow-y: scroll; padding-bottom: .01em; display: block; }
+li { list-style-type: none; }
+hr { display: none }
+.clear { clear: both; }
+.hide   { display: none; }
+.show   { display: inline-block; }
+
+input,textarea,select,option,optgroup { border: none; background: #ddd; }

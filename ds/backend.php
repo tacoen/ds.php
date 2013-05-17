@@ -1,6 +1,6 @@
 <?php 
 
-DEFINE (DOMAIN,"yourdomain.net");
+require("config.php");
 
 function scandir_thru($dir,$type) {
 	$dir = DS_ROOT."/$type/$dir";
@@ -27,7 +27,7 @@ function getfn($f,$e="txt") {
 
 function plugins_shop($type,$s="",$W="") {
 	$F = scandir_thru("plugins",$type);
-	echo "<div class='tab' id='plugins'><h2>Plugins for $type</h2><div id='plugins_list'>";
+	echo "<div class='tab' id='plugins'><div id='plugins_list'>";
 	foreach ($F as $f) {
 		if (!$f) continue; 
 		$fa = explode('/',$f); $fn = $fa[count($fa)-1]; $fncode = short_name($fn); $fz = filesize($f)/1000;
@@ -39,9 +39,9 @@ function plugins_shop($type,$s="",$W="") {
 		echo "\t<li class='di'><a href='http://".DOMAIN."/min/$type/$f'>minify</a></li>\n";
 		echo "</ul>\n";
 	}
-	echo "</div><div id='plugins_pack'><h3>Packer</h3><form action='pc.php' method='post'><textarea name='w'>$W</textarea>";
+	echo "</div><div id='plugins_pack' class='no-scroll'><h3>Packer</h3><form action='pc.php' method='post'><textarea name='w'>$W</textarea>";
 	echo "<input type='hidden' name='t' value='".$type."' />";
-	echo "<p>Pack Name: <input type='text' name='f' class='fn  autoselect' value='$s' /><input type='submit' name='s' value='pack' id='pack'/></p></form>";
+	echo "<p>Pack Name: <input type='text' name='f' class='fn  autoselect' value='$s' /> <input type='submit' name='s' value='pack' id='pack'/></p></form>";
 	echo "<div class='introd'>";
 	echo "<h5>File:</h5>";
 	echo "<p>".DS_ROOT."/$type/pack/<span>$s</span>.txt</p>";
@@ -66,10 +66,10 @@ function packer_header($type,$res) {?><!doctype html>
 <title>DS: <?php E($type); ?></title>
 <link rel="stylesheet" type="text/css" href="/css/reset.css"></link>
 <script type="text/javascript" src="/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/plugins/ds.css"></link>
+<link rel="stylesheet" type="text/css" href="/pack/9/ds.css"></link>
 <script type="text/javascript" src="/js/plugins/ds.js"></script>
 <head>
-<body>
+<body class="ds">
 <?php if ($res != "") {?><div class="res"><?php E($res); ?></div><?php }?>
 <?php }
 
@@ -88,13 +88,13 @@ function line($f,$t="css",$n) {
 
 function packer_footer() { ?>
 <div id="ds_menu">
-<select name="go" class="go">
+<select name="go" class="go li-style">
 	<option value="#">menu</a>
-	<option value="pc.php?t=css">CSS</a>
-	<option value="pc.php?t=js">Javascript</a>
-	<option value="pe.php?">Gallery</a>
+	<option value="/ds/pc.php?t=css">CSS</a>
+	<option value="/ds/pc.php?t=js">Javascript</a>
+	<option value="/ds/pe.php?">Gallery</a>
 	<option value="/font/">Fonts</a>
 </select>
-</div>
 <p class="footer">github.com/tacoen/ds.php</p>
+</div>
 <?php } ?>
