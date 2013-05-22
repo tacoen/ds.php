@@ -1,5 +1,17 @@
 <?php
 
+function fileClean($FILE) {
+	$FILE = str_replace(array("\r", "\n", "\t"),'',$FILE); $F = array();
+	foreach ($FILE as $l) {
+		$l = preg_replace('/^[;|#](.+)$/','',$l);
+		$l = preg_replace('/^\s\s+/','',$l);
+		if ($l != "") { array_push($F,$l); }
+	}
+	return $F;
+}
+
+function exit_debug($A) { 	echo '<pre>'; print_r($A); echo '</pre>'; exit; }
+
 function render($ctype,$output,$cache_file) {
 	global $operand;
 	if(extension_loaded('zlib')){ ob_start('ob_gzhandler'); }

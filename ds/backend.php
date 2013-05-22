@@ -39,7 +39,7 @@ function plugins_shop($type,$s="",$W="") {
 		echo "\t<li class='di'><a href='http://".DOMAIN."/min/$type/$f'>minify</a></li>\n";
 		echo "</ul>\n";
 	}
-	echo "</div><div id='plugins_pack' class='no-scroll'><h3>Packer</h3><form action='pc.php' method='post'><textarea name='w'>$W</textarea>";
+	echo "</div><div id='plugins_pack'><h3>Packer</h3><form action='pc.php' method='post'><textarea name='w'>$W</textarea>";
 	echo "<input type='hidden' name='t' value='".$type."' />";
 	echo "<p>Pack Name: <input type='text' name='f' class='fn  autoselect' value='$s' /> <input type='submit' name='s' value='pack' id='pack'/></p></form>";
 	echo "<div class='introd'>";
@@ -64,10 +64,8 @@ function packer_header($type,$res) {?><!doctype html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>DS: <?php E($type); ?></title>
-<link rel="stylesheet" type="text/css" href="/css/reset.css"></link>
 <script type="text/javascript" src="/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="/pack/9/ds.css"></link>
-<script type="text/javascript" src="/js/plugins/ds.js"></script>
+<link rel="stylesheet" type="text/css" href="/pack/1/ds.css"></link>
 <head>
 <body class="ds">
 <?php if ($res != "") {?><div class="res"><?php E($res); ?></div><?php }?>
@@ -75,26 +73,34 @@ function packer_header($type,$res) {?><!doctype html>
 
 function line($f,$t="css",$n) {
 	echo "<h3>";
-	echo "<a class='vs' href='http://".DOMAIN."/pack/0/".getfn($f,$t)."'>ds</a>";
+	echo "<a class='vs' href='http://".DOMAIN."/pack/0/".getfn($f,$t)."'>test</a>";
+	echo "<a class='ed' href='pc.php?t=$t&f=".getfn($f,"")."'>edit</a>";
 	echo "<a class='rz' href='../ds.php?z=1&p=".getfn($f,"")."&t=$t'>reset cache</a>";
 	echo getfn($f,$t)."</h3>";
 	echo "<div class='p $t'>"; 
 	echo "<input type='text' size='45' name='$t_$n' class='packed autoselect' value='http://".DOMAIN."/pack/0/".getfn($f,$t)."' />";
 	echo "<ul class='itemiz'>";
-	$L = file($f); foreach($L as $l) {$l=trim($l); if ($l!="") { echo "<li><a href='../$t/".$l."'>$l</a></li>"; } }
+	$L = fileClean(file($f)); foreach($L as $l) { $l=trim($l); if ($l!="") { echo "<li><a href='../$t/".$l."'>$l</a></li>"; } }
 	echo "</ul>";
 	echo "</div>";
 }
 
-function packer_footer() { ?>
+function packer_footer() { $tm=time(); ?>
 <div id="ds_menu">
 <select name="go" class="go li-style">
-	<option value="#">menu</a>
-	<option value="/ds/pc.php?t=css">CSS</a>
-	<option value="/ds/pc.php?t=js">Javascript</a>
-	<option value="/ds/pe.php?">Gallery</a>
-	<option value="/font/">Fonts</a>
+	<option value="#">menu</option>
+	<option value="/ds/pe.php?<?php E($tm); ?>">Gallery</option>
+	<option value="#">---------------</option>
+	<option value="/ds/pc.php?t=css">CSS</option>
+	<option value="/ds/pc.php?t=js">Javascript</option>
+	<option value="#">---------------</option>
+	<option value="/font/">Fonts Index</option>
+	<option value="/ds/tools/css-demo.php">CSS Sandbox</option>
+	<option value="/ds/tools/css-scratch.php">CSS Scratch Pad</option>
 </select>
 <p class="footer">github.com/tacoen/ds.php</p>
 </div>
+<script type="text/javascript" src="/js/plugins/ds.js"></script>
+</body>
+</html>
 <?php } ?>

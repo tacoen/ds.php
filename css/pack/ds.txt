@@ -1,3 +1,5 @@
-plugins/tacoen-fix.css
+#ini tidak ada
+plugins/reset.css
+;ini juga
 plugins/nice-lucida.css
 plugins/ds.css
