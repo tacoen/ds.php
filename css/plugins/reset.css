@@ -1,0 +1,20 @@
+*{outline:0;border:none;background:none;font-style:normal;font-weight:400;list-style-type:none;font-family:inherit;text-decoration:none;color:inherit;font-variant:normal;vertical-align:baseline;margin:0;padding:0;width:auto}
+button,input{font-size:1em; padding: 0}
+html.windows{overflow-y:scroll;}
+.clear{clear:both}
+a > img{border:none}
+hr {display:none;}
+table{border-collapse:collapse;border-spacing:0}
+body{font-size:1em;line-height:1.5em;z-index:1;position:relative}
+pre,code,xmp{overflow:auto}
+h1{font-size:2em}
+h2{font-size:1.5em}
+h3{font-size:1.2em}
+h4{font-size:1em}
+h5{font-size:.85em}
+sup{vertical-align:super;font-size:.5em}
+sub{vertical-align:sub;font-size:.5em}
+select,option,optgroup{color:#000;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
